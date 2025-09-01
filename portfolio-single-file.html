@@ -1,0 +1,917 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Portfolio | Chaithanya Balapuram</title>
+    <meta name="description" content="Personal portfolio of Chaithanya Balapuram: skills, experience, projects, and contact information.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+      :root {
+        --bg: #0b0d10;
+        --bg-alt: #0f1216;
+        --text: #e6e9ee;
+        --muted: #a6adbb;
+        --accent: #7c5cff;
+        --card: #11151a;
+        --border: #1b2028;
+      }
+
+      @media (prefers-color-scheme: light) {
+        :root {
+          --bg: #ffffff;
+          --bg-alt: #f7f8fa;
+          --text: #0b0d10;
+          --muted: #4b5565;
+          --accent: #5b6cff;
+          --card: #ffffff;
+          --border: #e6e9ee;
+        }
+      }
+
+      /* Theme overrides when toggled */
+      .theme-light {
+        --bg: #ffffff;
+        --bg-alt: #f7f8fa;
+        --text: #0b0d10;
+        --muted: #4b5565;
+        --accent: #5b6cff;
+        --card: #ffffff;
+        --border: #e6e9ee;
+      }
+
+      .theme-dark {
+        --bg: #0b0d10;
+        --bg-alt: #0f1216;
+        --text: #e6e9ee;
+        --muted: #a6adbb;
+        --accent: #7c5cff;
+        --card: #11151a;
+        --border: #1b2028;
+      }
+
+      /* Base styles */
+      * { 
+        box-sizing: border-box; 
+      }
+
+      html, body { 
+        height: 100%; 
+      }
+
+      body {
+        margin: 0;
+        font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+        color: var(--text);
+        background: radial-gradient(1200px 800px at 10% -10%, rgba(124,92,255,0.12), transparent 40%),
+                    radial-gradient(1200px 800px at 110% 10%, rgba(45,212,191,0.10), transparent 40%),
+                    var(--bg);
+        line-height: 1.6;
+      }
+
+      .container {
+        width: min(1100px, 92%);
+        margin: 0 auto;
+      }
+
+      /* Header */
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        backdrop-filter: saturate(1.1) blur(10px);
+        background: color-mix(in oklab, var(--bg) 80%, transparent);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px 0;
+      }
+
+      .brand {
+        color: var(--text);
+        font-weight: 700;
+        text-decoration: none;
+        letter-spacing: 0.3px;
+      }
+
+      .site-nav { 
+        display: flex; 
+        align-items: center; 
+        gap: 12px; 
+      }
+
+      .icon-button {
+        background: transparent;
+        border: 1px solid var(--border);
+        color: var(--text);
+        padding: 8px 10px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .icon-button:hover {
+        background: var(--card);
+        border-color: var(--accent);
+      }
+
+      .mobile-only { 
+        display: none; 
+      }
+
+      .nav-list { 
+        display: flex; 
+        gap: 18px; 
+        list-style: none; 
+        margin: 0; 
+        padding: 0; 
+      }
+
+      .nav-list a { 
+        color: var(--muted); 
+        text-decoration: none; 
+        font-weight: 500; 
+        transition: color 0.2s ease;
+      }
+
+      .nav-list a.active, 
+      .nav-list a:hover { 
+        color: var(--text); 
+      }
+
+      /* Hero section */
+      .hero { 
+        padding: 64px 0 24px; 
+      }
+
+      .hero-grid { 
+        display: grid; 
+        grid-template-columns: 1.2fr 0.8fr; 
+        gap: 32px; 
+        align-items: center; 
+      }
+
+      .eyebrow { 
+        color: var(--muted); 
+        text-transform: uppercase; 
+        letter-spacing: 1.4px; 
+        font-size: 12px; 
+      }
+
+      h1 { 
+        font-size: clamp(28px, 3.2vw + 14px, 44px); 
+        line-height: 1.15; 
+        margin: 8px 0 12px; 
+      }
+
+      .accent { 
+        color: var(--accent); 
+      }
+
+      .lead { 
+        color: var(--muted); 
+        font-size: 18px; 
+      }
+
+      .cta-row { 
+        display: flex; 
+        gap: 12px; 
+        margin-top: 18px; 
+      }
+
+      .button {
+        display: inline-block;
+        text-decoration: none;
+        color: var(--text);
+        border: 1px solid var(--border);
+        background: var(--card);
+        padding: 10px 14px;
+        border-radius: 12px;
+        transition: all 0.2s ease;
+      }
+
+      .button:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      }
+
+      .button.primary { 
+        background: var(--accent); 
+        color: white; 
+        border: none; 
+      }
+
+      .button.small { 
+        padding: 8px 12px; 
+        font-size: 14px; 
+      }
+
+      .hero-photo img { 
+        width: 100%; 
+        border-radius: 18px; 
+        border: 1px solid var(--border); 
+        transition: transform 0.3s ease;
+      }
+
+      .hero-photo img:hover {
+        transform: scale(1.02);
+      }
+
+      /* Sections */
+      .section { 
+        padding: 42px 0; 
+      }
+
+      .section.alt { 
+        background: var(--bg-alt); 
+      }
+
+      h2 { 
+        margin: 0 0 16px; 
+        font-size: 24px; 
+      }
+
+      .inline-list { 
+        display: flex; 
+        flex-wrap: wrap; 
+        gap: 14px 24px; 
+        padding: 0; 
+        margin: 8px 0 0; 
+        list-style: none; 
+      }
+
+      .inline-list a { 
+        color: var(--text); 
+        text-decoration: none;
+        transition: color 0.2s ease;
+      }
+
+      .inline-list a:hover {
+        color: var(--accent);
+      }
+
+      /* Skills */
+      .chips { 
+        display: flex; 
+        flex-wrap: wrap; 
+        gap: 10px; 
+      }
+
+      .chip { 
+        background: var(--card); 
+        border: 1px solid var(--border); 
+        color: var(--text); 
+        padding: 8px 12px; 
+        border-radius: 999px; 
+        font-size: 14px; 
+        transition: all 0.2s ease;
+      }
+
+      .chip:hover {
+        background: var(--accent);
+        color: white;
+        border-color: var(--accent);
+      }
+
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 24px;
+      }
+
+      .skill-category h3 {
+        margin: 0 0 12px;
+        font-size: 18px;
+        color: var(--accent);
+      }
+
+      /* Timeline */
+      .timeline { 
+        display: grid; 
+        gap: 20px; 
+      }
+
+      .timeline-item { 
+        background: var(--card); 
+        border: 1px solid var(--border); 
+        padding: 20px; 
+        border-radius: 14px; 
+        transition: transform 0.2s ease;
+      }
+
+      .timeline-item:hover {
+        transform: translateY(-2px);
+      }
+
+      .timeline-content h3 {
+        margin: 0 0 4px;
+        color: var(--accent);
+        font-size: 18px;
+      }
+
+      .timeline-company {
+        color: var(--muted);
+        font-weight: 500;
+        margin: 0 0 4px;
+      }
+
+      .timeline-date {
+        color: var(--muted);
+        font-size: 14px;
+        margin: 0 0 12px;
+      }
+
+      .timeline-content ul {
+        margin: 0;
+        padding-left: 18px;
+      }
+
+      .timeline-content li {
+        margin-bottom: 6px;
+        color: var(--text);
+      }
+
+      /* Projects */
+      .grid.cards { 
+        display: grid; 
+        grid-template-columns: repeat(3, 1fr); 
+        gap: 16px; 
+      }
+
+      .card { 
+        background: var(--card); 
+        border: 1px solid var(--border); 
+        padding: 16px; 
+        border-radius: 14px; 
+        transition: transform 0.2s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-2px);
+      }
+
+      .card-actions { 
+        display: flex; 
+        gap: 8px; 
+        margin-top: 10px; 
+      }
+
+      /* Education */
+      .education-grid {
+        display: grid;
+        gap: 24px;
+      }
+
+      .education-item {
+        background: var(--card);
+        border: 1px solid var(--border);
+        padding: 20px;
+        border-radius: 14px;
+        transition: transform 0.2s ease;
+      }
+
+      .education-item:hover {
+        transform: translateY(-2px);
+      }
+
+      .education-item h3 {
+        margin: 0 0 8px;
+        color: var(--accent);
+        font-size: 18px;
+      }
+
+      .institution {
+        color: var(--muted);
+        font-weight: 500;
+        margin: 0 0 4px;
+      }
+
+      .duration, .gpa, .percentage {
+        color: var(--muted);
+        font-size: 14px;
+        margin: 0 0 12px;
+      }
+
+      .education-item ul {
+        margin: 0;
+        padding-left: 18px;
+      }
+
+      .education-item li {
+        margin-bottom: 6px;
+        color: var(--text);
+      }
+
+      /* Certifications */
+      .certifications-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+      }
+
+      .certification-item {
+        background: var(--card);
+        border: 1px solid var(--border);
+        padding: 20px;
+        border-radius: 14px;
+        transition: transform 0.2s ease;
+      }
+
+      .certification-item:hover {
+        transform: translateY(-2px);
+      }
+
+      .certification-item h3 {
+        margin: 0 0 8px;
+        color: var(--accent);
+        font-size: 16px;
+      }
+
+      .issuer {
+        color: var(--muted);
+        font-weight: 500;
+        margin: 0 0 4px;
+      }
+
+      .date {
+        color: var(--muted);
+        font-size: 14px;
+        margin: 0 0 12px;
+      }
+
+      .certification-item p:last-child {
+        margin: 0;
+        color: var(--text);
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
+      /* Contact form */
+      .contact-form { 
+        display: grid; 
+        gap: 12px; 
+      }
+
+      .form-row { 
+        display: grid; 
+        grid-template-columns: 1fr 1fr; 
+        gap: 12px; 
+      }
+
+      label span { 
+        display: block; 
+        font-size: 14px; 
+        color: var(--muted); 
+        margin-bottom: 6px; 
+      }
+
+      input, textarea { 
+        width: 100%; 
+        background: var(--card); 
+        border: 1px solid var(--border); 
+        color: var(--text); 
+        padding: 10px 12px; 
+        border-radius: 12px; 
+        transition: border-color 0.2s ease;
+      }
+
+      input:focus, textarea:focus {
+        outline: none;
+        border-color: var(--accent);
+      }
+
+      .form-actions { 
+        margin-top: 6px; 
+      }
+
+      /* Footer */
+      .site-footer { 
+        border-top: 1px solid var(--border); 
+        padding: 20px 0 40px; 
+        color: var(--muted); 
+      }
+
+      /* Responsive design */
+      @media (max-width: 900px) {
+        .hero-grid { 
+          grid-template-columns: 1fr; 
+        }
+        .grid.cards { 
+          grid-template-columns: 1fr 1fr; 
+        }
+        .skills-grid { 
+          grid-template-columns: 1fr; 
+        }
+        .certifications-grid { 
+          grid-template-columns: 1fr; 
+        }
+      }
+
+      @media (max-width: 640px) {
+        .mobile-only { 
+          display: inline-block; 
+        }
+        .nav-list { 
+          display: none; 
+          position: absolute; 
+          right: 4%; 
+          top: 56px; 
+          background: var(--card); 
+          border: 1px solid var(--border); 
+          border-radius: 12px; 
+          padding: 8px; 
+          flex-direction: column; 
+          gap: 6px; 
+        }
+        .nav-list.open { 
+          display: flex; 
+        }
+        .form-row { 
+          grid-template-columns: 1fr; 
+        }
+        .grid.cards { 
+          grid-template-columns: 1fr; 
+        }
+        .skills-grid { 
+          grid-template-columns: 1fr; 
+        }
+        .certifications-grid { 
+          grid-template-columns: 1fr; 
+        }
+        .cta-row { 
+          flex-direction: column; 
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header" id="top">
+      <div class="container header-inner">
+        <a href="#top" class="brand" aria-label="Home">Chaithanya Balapuram</a>
+        <nav class="site-nav" aria-label="Primary">
+          <button id="themeToggle" class="icon-button" aria-label="Toggle theme" title="Toggle theme">🌓</button>
+          <button id="menuToggle" class="icon-button mobile-only" aria-label="Toggle menu" title="Toggle menu">☰</button>
+          <ul id="navList" class="nav-list">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#certifications">Certifications</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" aria-label="Intro">
+        <div class="container hero-grid">
+          <div>
+            <p class="eyebrow">Open to opportunities</p>
+            <h1>Hi, I'm <span class="accent">Chaithanya Balapuram</span></h1>
+            <p class="lead">I'm a skilled Software Developer with a passion for creating innovative solutions and solving real-world problems, and I'm also skilled in Cyber Security.</p>
+            <div class="cta-row">
+              <a class="button primary" href="#projects">View Projects</a>
+              <a class="button" href="chaithanya_Balapuram_cv (4).pdf" target="_blank" rel="noopener">Download CV</a>
+            </div>
+          </div>
+          <div class="hero-photo" aria-hidden="true">
+            <img src="IMG_20250611_195948.jpg" alt="Portrait of Chaithanya Balapuram">
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="section">
+        <div class="container">
+          <h2>About</h2>
+          <p>I am a passionate Computer Science student and aspiring Software Developer with a strong foundation in web development technologies and cybersecurity. Currently pursuing my B.Tech in Computer Science and Engineering, I am actively seeking opportunities to apply my technical skills in real-world projects and contribute to innovative solutions.</p>
+          <p>My expertise spans both frontend and backend development, with proficiency in modern web technologies including React, Node.js, and full-stack development. I also have a keen interest in cybersecurity and ethical hacking, making me well-rounded in both development and security aspects of software engineering.</p>
+          <ul class="inline-list">
+            <li><strong>Location:</strong> Bengaluru, India</li>
+            <li><strong>Email:</strong> <a href="mailto:chaithanyabalapuram14@gmail.com">chaithanyabalapuram14@gmail.com</a></li>
+            <li><strong>Phone:</strong> +91 9347736185</li>
+            <li><a href="https://www.linkedin.com/in/chaithanya-balapuram-4b570a321" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="https://github.com/ChaithanyaBalapuram?tab=repositories" target="_blank" rel="noopener">GitHub</a></li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="skills" class="section alt">
+        <div class="container">
+          <h2>Skills</h2>
+          <div class="skills-grid">
+            <div class="skill-category">
+              <h3>Programming Languages</h3>
+              <div class="chips">
+                <span class="chip">JavaScript</span>
+                <span class="chip">Python</span>
+                <span class="chip">Java</span>
+                <span class="chip">C++</span>
+                <span class="chip">C</span>
+              </div>
+            </div>
+            <div class="skill-category">
+              <h3>Web Technologies</h3>
+              <div class="chips">
+                <span class="chip">HTML5</span>
+                <span class="chip">CSS3</span>
+                <span class="chip">React.js</span>
+                <span class="chip">Node.js</span>
+                <span class="chip">MySQL</span>
+              </div>
+            </div>
+            <div class="skill-category">
+              <h3>Cybersecurity</h3>
+              <div class="chips">
+                <span class="chip">Ethical Hacking</span>
+                <span class="chip">Network Security</span>
+                <span class="chip">Penetration Testing</span>
+                <span class="chip">Security Auditing</span>
+              </div>
+            </div>
+            <div class="skill-category">
+              <h3>Tools & Technologies</h3>
+              <div class="chips">
+                <span class="chip">Git & GitHub</span>
+                <span class="chip">VS Code</span>
+                <span class="chip">Linux</span>
+                <span class="chip">Wireshark</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="experience" class="section">
+        <div class="container">
+          <h2>Experience</h2>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-content">
+                <h3>Student Developer</h3>
+                <p class="timeline-company">Freelance Projects</p>
+                <p class="timeline-date">2023 - Present</p>
+                <ul>
+                  <li>Developed responsive web applications using React.js and Node.js</li>
+                  <li>Implemented RESTful APIs and database management systems</li>
+                  <li>Collaborated with peers on various academic and personal projects</li>
+                  <li>Contributed to open-source projects and maintained version control using Git</li>
+                </ul>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-content">
+                <h3>Cybersecurity Enthusiast</h3>
+                <p class="timeline-company">Personal Projects & Learning</p>
+                <p class="timeline-date">2022 - Present</p>
+                <ul>
+                  <li>Studied ethical hacking methodologies and penetration testing techniques</li>
+                  <li>Practiced network security analysis and vulnerability assessment</li>
+                  <li>Participated in cybersecurity competitions and CTF challenges</li>
+                  <li>Stayed updated with latest security threats and defense mechanisms</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="section alt">
+        <div class="container">
+          <h2>Projects</h2>
+          <div class="grid cards">
+            <article class="card">
+              <h3>E-Commerce Web Application</h3>
+              <p>Full-stack e-commerce platform built with React.js, Node.js, and MongoDB. Features user authentication, product management, shopping cart, and payment integration.</p>
+              
+            </article>
+            <article class="card">
+              <h3>Secure Password Generator</h3>
+              <p>Developed a browser-based password generator to enhance secure login practices with customizable options and encryption features.</p>
+             
+            </article>
+            <article class="card">
+              <h3>Portfolio Website</h3>
+              <p>Personal portfolio website showcasing skills, projects, and experience with modern responsive design and smooth animations.</p>
+              
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="education" class="section">
+        <div class="container">
+          <h2>Education</h2>
+          <div class="education-grid">
+            <div class="education-item">
+              <h3>B.Tech in Computer Science and Engineering</h3>
+              <p class="institution">Sreenivasa Institute of Technology and Management, Chitoor</p>
+              <p class="duration">2022 - 2026</p>
+              <p class="gpa">CGPA: 6.7/10</p>
+              <ul>
+                <li>Core subjects: Data Structures, Algorithms, Database Management, Computer Networks, Java</li>
+                <li>Electives: Cybersecurity, Machine Learning, Web Development</li>
+               
+              </ul>
+            </div>
+            <div class="education-item">
+              <h3>Intermediate (MPC)</h3>
+              <p class="institution">Sri Vidya Vikas Jr College, Chitoor</p>
+              <p class="duration">2020 - 2022</p>
+              <p class="percentage">Percentage: 68%</p>
+              <ul>
+                <li>Mathematics, Physics, Chemistry</li>
+                
+              </ul>
+            </div>
+            <div class="education-item">
+              <h3>SSC</h3>
+              <p class="institution">Vignana Deepthi E.M School, Chitoor</p>
+              <p class="duration">2022</p>
+              <p class="gpa">CGPA: 9.8/10</p>
+              
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="certifications" class="section alt">
+        <div class="container">
+          <h2>Certifications</h2>
+          <div class="certifications-grid">
+            <div class="certification-item">
+              <h3>Python Programming</h3>
+              <p class="issuer">NPTEL</p>
+              <p class="date">2023</p>
+              <p>Comprehensive Python programming course with data structures and algorithms</p>
+            </div>
+            <div class="certification-item">
+              <h3>Cybersecurity Fundamentals</h3>
+              <p class="issuer">Embrizon Technologies</p>
+              <p class="date">2024</p>
+              <p>Introduction to cybersecurity concepts, threats, and defense mechanisms</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section">
+        <div class="container">
+          <h2>Contact</h2>
+          <form class="contact-form" name="contact" netlify>
+            <input type="hidden" name="form-name" value="contact">
+            <div class="form-row">
+              <label>
+                <span>Name</span>
+                <input name="name" type="text" required>
+              </label>
+              <label>
+                <span>Email</span>
+                <input name="email" type="email" required>
+              </label>
+            </div>
+            <label>
+              <span>Message</span>
+              <textarea name="message" rows="5" required></textarea>
+            </label>
+            <div class="form-actions">
+              <button class="button primary" type="submit">Send</button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>© <span id="year"></span> Chaithanya Balapuram. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      // Theme toggle with persistence
+      (function () {
+        const root = document.documentElement;
+        const toggle = document.getElementById('themeToggle');
+        const stored = localStorage.getItem('theme');
+        if (stored) root.classList.add(stored);
+        function currentTheme() {
+          return root.classList.contains('theme-light') ? 'theme-light' : root.classList.contains('theme-dark') ? 'theme-dark' : null;
+        }
+        function setTheme(next) {
+          root.classList.remove('theme-light', 'theme-dark');
+          if (next) root.classList.add(next);
+          if (next) localStorage.setItem('theme', next); else localStorage.removeItem('theme');
+        }
+        if (toggle) {
+          toggle.addEventListener('click', () => {
+            const curr = currentTheme();
+            setTheme(curr === 'theme-dark' ? 'theme-light' : 'theme-dark');
+          });
+        }
+      })();
+
+      // Mobile menu toggle
+      (function () {
+        const menuToggle = document.getElementById('menuToggle');
+        const navList = document.getElementById('navList');
+        if (!menuToggle || !navList) return;
+        menuToggle.addEventListener('click', () => {
+          navList.classList.toggle('open');
+        });
+        navList.addEventListener('click', (e) => {
+          if (e.target.tagName === 'A') navList.classList.remove('open');
+        });
+      })();
+
+      // Smooth scroll and active section highlighting
+      (function () {
+        const links = document.querySelectorAll('.nav-list a[href^="#"]');
+        const sections = Array.from(links).map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+        links.forEach(link => {
+          link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const id = link.getAttribute('href');
+            const el = document.querySelector(id);
+            if (!el) return;
+            window.scrollTo({ top: el.offsetTop - 60, behavior: 'smooth' });
+            history.replaceState(null, '', id);
+          });
+        });
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            const id = '#' + entry.target.id;
+            const link = document.querySelector('.nav-list a[href="' + id + '"]');
+            if (!link) return;
+            if (entry.isIntersecting) {
+              document.querySelectorAll('.nav-list a').forEach(a => a.classList.remove('active'));
+              link.classList.add('active');
+            }
+          });
+        }, { rootMargin: '-40% 0px -55% 0px', threshold: 0.01 });
+        sections.forEach(sec => observer.observe(sec));
+      })();
+
+      // Set current year
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // Optional: simple data injection placeholders (can be replaced with your CV later)
+      window.portfolioData = {
+        skills: ['HTML', 'CSS', 'JavaScript', 'React', 'Node.js'],
+        experience: [
+          { role: 'Frontend Developer', company: 'Example Co', period: '2022 – Present', location: 'Remote', bullets: ['Built responsive UI', 'Improved performance by 30%'] }
+        ],
+        projects: [
+          { name: 'Awesome App', desc: 'A cool app that solves X', live: '#', code: '#' }
+        ],
+        education: [
+          { degree: 'B.Sc. in Computer Science', org: 'Example University', year: '2021' }
+        ]
+      };
+
+      (function renderFromData() {
+        const d = window.portfolioData || {};
+        const skillsList = document.getElementById('skillsList');
+        if (skillsList && Array.isArray(d.skills)) {
+          skillsList.innerHTML = d.skills.map(s => '<span class="chip">' + s + '</span>').join('');
+        }
+        const exp = document.getElementById('experienceList');
+        if (exp && Array.isArray(d.experience)) {
+          exp.innerHTML = d.experience.map(item => `
+            <article class="timeline-item">
+              <header>
+                <h3>${item.role} · ${item.company}</h3>
+                <div class="meta">${item.period} · ${item.location || ''}</div>
+              </header>
+              <ul>
+                ${(item.bullets||[]).map(b => `<li>${b}</li>`).join('')}
+              </ul>
+            </article>
+          `).join('');
+        }
+        const projects = document.getElementById('projectsGrid');
+        if (projects && Array.isArray(d.projects)) {
+          projects.innerHTML = d.projects.map(p => `
+            <article class="card">
+              <h3>${p.name}</h3>
+              <p>${p.desc||''}</p>
+              
+            </article>
+          `).join('');
+        }
+        const edu = document.getElementById('educationList');
+        if (edu && Array.isArray(d.education)) {
+          edu.innerHTML = d.education.map(e => `<li><strong>${e.degree}</strong> — ${e.org} (${e.year})</li>`).join('');
+        }
+      })();
+    </script>
+  </body>
+</html>
